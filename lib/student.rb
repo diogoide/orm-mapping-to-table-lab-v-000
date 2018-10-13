@@ -28,11 +28,11 @@ class Student
 
   #Method hat can drop that table
   def self.drop_table
-      sql = <<-SQL 
+      sql = <<-SQL
         DROP TABLE students
-        SQL 
+        SQL
       DB[:conn].execute(sql)
-  end 
+  end
 
 
   #Method save that can save the data concerning an individual student object to the database
