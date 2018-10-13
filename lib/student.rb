@@ -35,15 +35,18 @@ class Student
   end
 
   #Method save that can save the data concerning an individual student object to the database
-  def save 
-    sql = <<-SQL 
-      INSERT INTO students (name, grade) 
+  def save
+    sql = <<-SQL
+      INSERT INTO students (name, grade)
       VALUES (?, ?)
-      SQL 
+      SQL
 
-      
+      DB[:conn].execute(sql, self.name, self.grade)
 
-    
+      @id = DB[:conn].execute("SELECT last_insert_rowid() FROM students")[0][0]
+  end 
+
+
   #Method that creates a new instance of student class and then saves it to the database
 
 
