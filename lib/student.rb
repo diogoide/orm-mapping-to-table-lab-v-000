@@ -46,8 +46,18 @@ class Student
       @id = DB[:conn].execute("SELECT last_insert_rowid() FROM students")[0][0]
   end 
 
-
   #Method that creates a new instance of student class and then saves it to the database
 
+  def self.create(name:, grade:)
+    student = Student.new(name, grade)
+    student.save
+    student 
+  end 
+
+# 1.	  def self.create(name:, album:)
+# 2.	    song = Song.new(name, album)
+# 3.	    song.save
+# 4.	    song
+# 5.	  end
 
 end
